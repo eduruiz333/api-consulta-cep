@@ -25,7 +25,7 @@ const reset = () => {
     cep.focus()
     btnSearch.classList.remove('disabled')
     btnSearch.classList.remove('btn-dark')
-        btnSearch.classList.add('btn-primary')
+    btnSearch.classList.add('btn-primary')
     locationDatas.classList.add('d-none')
     btnResearch.classList.add('d-none')
     contentaMapa.innerHTML = ''
