@@ -1,10 +1,8 @@
 // CEP Paulista: 01310-100
-
 // ARROW FUNCTIONS CONST DECLARATIONS
 
 const loadMap = (e) => {
     let search = cep.value.replace('-', '')
-
     const options = {
         method: 'GET',
         mode: 'cors',
@@ -56,7 +54,6 @@ const showData = (result) => {
 
     (mapa = () => {
         const logradouro = result.logradouro
-
         btnSearch.classList.add('disabled')
         btnSearch.classList.add('btn-dark')
         btnSearch.classList.remove('btn-primary')
