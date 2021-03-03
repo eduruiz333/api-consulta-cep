@@ -9,22 +9,48 @@
 // https://www.youtube.com/watch?v=rJcD0cQ6H8k&ab_channel=CodingMindBrasil
 // https://imasters.com.br/back-end/google-maps-api
 
-
-// Como transformar CEP para Latitude e Longitude?
-// https://cursos.alura.com.br/forum/topico-como-transformar-cep-para-latitude-e-longitude-126347
-
 // CHAVE API GOOGLE MAPS: AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no
 // https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=Eiffel+Tower,Paris+France
 
 const cep = document.querySelector('#cep')
 
+const btnSearch = document.querySelector('.search')
+btnSearch.addEventListener('click', errorMessage)
+
+const emptyFleld = document.querySelector('.empty-message')
+
+console.log(cep.value);
+
+function errorMessage() {
+    if(cep.value === '') {
+        emptyFleld.classList.remove('d-none')
+    }
+}
+
 const showData = (result) => {
     for (const field in result) {
         if (document.querySelector('#' + field)) {
             document.querySelector('#' + field).value = result[field]
-            console.log(field)
         }
     }
+
+    const logradouro = result.logradouro
+
+    function mapa() {
+        const contentaMapa = document.querySelector('.mapa')
+        
+        btnSearch.classList.add('disabled')
+        cep.setAttribute('readonly', true)
+        emptyFleld.classList.add('d-none')
+
+        contentaMapa.innerHTML = `
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=${logradouro},Brasil" frameborder="0"></iframe>
+        <a class="btn btn-secondary mb-5" id="research">Nova procura</a>
+        `
+
+    }
+    mapa()
+    
 }
 
 cep.addEventListener('blur', (e) => {
@@ -43,6 +69,6 @@ cep.addEventListener('blur', (e) => {
                 .then(data => showData(data))
         })
         .catch(e => console.log('Erro: ' + e, message))
-
 })
+
 
