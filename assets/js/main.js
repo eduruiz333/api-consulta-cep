@@ -24,6 +24,8 @@ const reset = () => {
     cep.readOnly = false;
     cep.focus()
     btnSearch.classList.remove('disabled')
+    btnSearch.classList.remove('btn-dark')
+        btnSearch.classList.add('btn-primary')
     locationDatas.classList.add('d-none')
     btnResearch.classList.add('d-none')
     contentaMapa.innerHTML = ''
@@ -56,6 +58,8 @@ const showData = (result) => {
         const logradouro = result.logradouro
 
         btnSearch.classList.add('disabled')
+        btnSearch.classList.add('btn-dark')
+        btnSearch.classList.remove('btn-primary')
         cep.setAttribute('readonly', true)
         emptyFleld.classList.add('d-none')
         locationDatas.classList.remove('d-none')
