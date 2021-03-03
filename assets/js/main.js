@@ -24,6 +24,7 @@ console.log(cep.value);
 function errorMessage() {
     if(cep.value === '') {
         emptyFleld.classList.remove('d-none')
+        emptyFleld.innerHTML = 'Preencha o campo CEP'
     }
 }
 
@@ -68,7 +69,11 @@ cep.addEventListener('blur', (e) => {
             response.json()
                 .then(data => showData(data))
         })
-        .catch(e => console.log('Erro: ' + e, message))
+        .catch(e => invalid())
 })
 
 
+function invalid () {
+    emptyFleld.classList.remove('d-none')
+    emptyFleld.innerHTML = 'CEP inválido'
+}
