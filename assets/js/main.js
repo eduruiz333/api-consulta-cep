@@ -13,11 +13,17 @@
 // https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=Eiffel+Tower,Paris+France
 
 const cep = document.querySelector('#cep')
+const contentaMapa = document.querySelector('.mapa')
 
 const btnSearch = document.querySelector('.search')
 btnSearch.addEventListener('click', errorMessage)
 
+const btnResearch = document.querySelector('.research')
+btnResearch.addEventListener('click', reset)
+
 const emptyFleld = document.querySelector('.empty-message')
+
+const locationDatas = document.querySelector('.hidden-content')
 
 console.log(cep.value);
 
@@ -38,16 +44,14 @@ const showData = (result) => {
     const logradouro = result.logradouro
 
     function mapa() {
-        const contentaMapa = document.querySelector('.mapa')
         
         btnSearch.classList.add('disabled')
         cep.setAttribute('readonly', true)
         emptyFleld.classList.add('d-none')
+        locationDatas.classList.remove('d-none')
+        btnResearch.classList.remove('d-none')
 
-        contentaMapa.innerHTML = `
-        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=${logradouro},Brasil" frameborder="0"></iframe>
-        <a class="btn btn-secondary mb-5" id="research">Nova procura</a>
-        `
+        contentaMapa.innerHTML = ` <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=${logradouro},Brasil" frameborder="0"></iframe> `
 
     }
     mapa()
@@ -77,3 +81,13 @@ function invalid () {
     emptyFleld.classList.remove('d-none')
     emptyFleld.innerHTML = 'CEP inválido'
 }
+
+function reset() {
+    cep.value = ''
+    cep.readOnly = false;
+    btnSearch.classList.remove('disabled')
+    locationDatas.classList.add('d-none')
+    btnResearch.classList.add('d-none')
+    contentaMapa.innerHTML = ''
+}
+// 01310-100
