@@ -1,6 +1,15 @@
+@font-face {
+    font-family: metropolis;
+    src: url('../fonts/metropolis-regular-webfont.woff2');
+
+    font-family: raleway;
+    src: url('../fonts/Raleway-Regular.ttf');
+    }
+
 body {
     background-color: #263238;
     color: #80cbc4;
+    font-family: raleway;
 }
 
 iframe {
@@ -21,6 +30,7 @@ label {
 
 input {
     color: #4d7a7c !important;
+    font-family: metropolis;
 }
 
 input:read-only {
