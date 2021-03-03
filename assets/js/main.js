@@ -12,8 +12,16 @@
 // CHAVE API GOOGLE MAPS: AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no
 // https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=Eiffel+Tower,Paris+France
 
+// CEP Paulista: 01310-100
+
 const cep = document.querySelector('#cep')
-const contentaMapa = document.querySelector('.mapa')
+cep.focus()
+cep.addEventListener('keyup', function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        btnSearch.click();
+    }
+})
 
 const btnSearch = document.querySelector('.search')
 btnSearch.addEventListener('click', errorMessage)
@@ -21,14 +29,12 @@ btnSearch.addEventListener('click', errorMessage)
 const btnResearch = document.querySelector('.research')
 btnResearch.addEventListener('click', reset)
 
+const contentaMapa = document.querySelector('.mapa')
 const emptyFleld = document.querySelector('.empty-message')
-
 const locationDatas = document.querySelector('.hidden-content')
 
-console.log(cep.value);
-
 function errorMessage() {
-    if(cep.value === '') {
+    if (cep.value === '') {
         emptyFleld.classList.remove('d-none')
         emptyFleld.innerHTML = 'Preencha o campo CEP'
     }
@@ -44,21 +50,22 @@ const showData = (result) => {
     const logradouro = result.logradouro
 
     function mapa() {
-        
+
         btnSearch.classList.add('disabled')
         cep.setAttribute('readonly', true)
         emptyFleld.classList.add('d-none')
         locationDatas.classList.remove('d-none')
         btnResearch.classList.remove('d-none')
-
         contentaMapa.innerHTML = ` <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=${logradouro},Brasil" frameborder="0"></iframe> `
 
     }
     mapa()
-    
+
 }
 
-cep.addEventListener('blur', (e) => {
+btnSearch.addEventListener('click', loadMap)
+
+function loadMap(e) {
 
     let search = cep.value.replace('-', '')
 
@@ -74,10 +81,10 @@ cep.addEventListener('blur', (e) => {
                 .then(data => showData(data))
         })
         .catch(e => invalid())
-})
+}
 
 
-function invalid () {
+function invalid() {
     emptyFleld.classList.remove('d-none')
     emptyFleld.innerHTML = 'CEP inválido'
 }
@@ -85,9 +92,10 @@ function invalid () {
 function reset() {
     cep.value = ''
     cep.readOnly = false;
+    cep.focus()
     btnSearch.classList.remove('disabled')
     locationDatas.classList.add('d-none')
     btnResearch.classList.add('d-none')
     contentaMapa.innerHTML = ''
 }
-// 01310-100
+
