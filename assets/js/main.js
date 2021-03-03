@@ -3,7 +3,6 @@
 // ARROW FUNCTIONS CONST DECLARATIONS
 
 const loadMap = (e) => {
-
     let search = cep.value.replace('-', '')
 
     const options = {
@@ -33,7 +32,9 @@ const reset = () => {
 const errorMessage = () => {
     if (cep.value === '') {
         emptyFleld.classList.remove('d-none')
-        emptyFleld.innerHTML = 'Preencha o campo CEP'
+        emptyFleld.innerHTML = 'CEP inválido'
+        cep.value = ''
+        cep.focus()
     }
 }
 
@@ -44,6 +45,24 @@ const invalid = () => {
     cep.focus()
 }
 
+const showData = (result) => {
+    for (const field in result) {
+        if (document.querySelector('#' + field)) {
+            document.querySelector('#' + field).value = result[field]
+        }
+    }
+
+    (mapa = () => {
+        const logradouro = result.logradouro
+
+        btnSearch.classList.add('disabled')
+        cep.setAttribute('readonly', true)
+        emptyFleld.classList.add('d-none')
+        locationDatas.classList.remove('d-none')
+        btnResearch.classList.remove('d-none')
+        contentaMapa.innerHTML = ` <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=${logradouro},Brasil" frameborder="0"></iframe> `
+    })()
+}
 
 // CONST AND LISTENERS DECLARATIONS
 
@@ -70,27 +89,6 @@ cep.addEventListener('keyup', function (event) {
 const onlyNumbers = (text) => {
     text = text.replace(/[^0-9]/g, '');
     cep.value = text;
-}
-
-
-const showData = (result) => {
-    for (const field in result) {
-        if (document.querySelector('#' + field)) {
-            document.querySelector('#' + field).value = result[field]
-        }
-    }
-
-    (mapa = () => {
-        const logradouro = result.logradouro
-
-        btnSearch.classList.add('disabled')
-        cep.setAttribute('readonly', true)
-        emptyFleld.classList.add('d-none')
-        locationDatas.classList.remove('d-none')
-        btnResearch.classList.remove('d-none')
-        contentaMapa.innerHTML = ` <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=${logradouro},Brasil" frameborder="0"></iframe> `
-    })()
-
 }
 
 btnSearch.addEventListener('click', loadMap)
