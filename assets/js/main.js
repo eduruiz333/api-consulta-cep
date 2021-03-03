@@ -23,6 +23,12 @@ cep.addEventListener('keyup', function (event) {
     }
 })
 
+function onlyNumbers(text) {  
+    // Replace regex '/[^0-9]/g'
+    text = text.replace(/[^0-9]/g, '');
+    cep.value = text;
+  }
+
 const btnSearch = document.querySelector('.search')
 btnSearch.addEventListener('click', errorMessage)
 
@@ -60,10 +66,16 @@ const showData = (result) => {
 
     }
     mapa()
-
 }
 
 btnSearch.addEventListener('click', loadMap)
+
+function invalid() {
+    emptyFleld.classList.remove('d-none')
+    emptyFleld.innerHTML = 'CEP inválido'
+    cep.value = ''
+    cep.focus()
+}
 
 function loadMap(e) {
 
@@ -81,12 +93,6 @@ function loadMap(e) {
                 .then(data => showData(data))
         })
         .catch(e => invalid())
-}
-
-
-function invalid() {
-    emptyFleld.classList.remove('d-none')
-    emptyFleld.innerHTML = 'CEP inválido'
 }
 
 function reset() {

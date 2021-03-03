@@ -22,8 +22,8 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="cep">CEP</label>
-                                <input type="text" class="form-control" id="cep" maxlength="9">
-                                <p><small>00000-000</small></p>
+                                <input type="text" class="form-control" id="cep" maxlength="9" oninput="onlyNumbers(this.value)">
+                                <p class="text-black-50"><small>Somente números (00000-000)</small></p>
                                 <p class="empty-message text-danger font-weight-bold d-none"></p>
                                 <div class="form-group">
                                     <a class="btn btn-primary search">Procurar</a>
