@@ -1,6 +1,11 @@
 // CEP Paulista: 01310-100
 // ARROW FUNCTIONS CONST DECLARATIONS
 
+const onlyNumbers = (text) => {
+    text = text.replace(/[^0-9]/g, '');
+    cep.value = text;
+}
+
 const loadMap = (e) => {
     let search = cep.value.replace('-', '')
     const options = {
@@ -17,16 +22,23 @@ const loadMap = (e) => {
         .catch(e => invalid())
 }
 
-const reset = () => {
-    cep.value = ''
-    cep.readOnly = false;
-    cep.focus()
-    btnSearch.classList.remove('disabled')
-    btnSearch.classList.remove('btn-dark')
-    btnSearch.classList.add('btn-primary')
-    locationDatas.classList.add('d-none')
-    btnResearch.classList.add('d-none')
-    contentaMapa.innerHTML = ''
+const showData = (result) => {
+    for (const field in result) {
+        if (document.querySelector('#' + field)) {
+            document.querySelector('#' + field).value = result[field]
+        }
+    }
+
+    (map = () => {
+        const logradouro = result.logradouro
+        contentaMap.innerHTML = ` <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=${logradouro},Brasil" frameborder="0"></iframe> `
+        cep.setAttribute('readonly', true)
+        btnSearch.classList.add('disabled','btn-secondary')
+        btnSearch.classList.remove('btn-success')
+        emptyFleld.classList.add('d-none')
+        btnResearch.classList.remove('btn-secondary', 'disabled')
+        btnResearch.classList.add('btn-info')
+    })()
 }
 
 const errorMessage = () => {
@@ -45,24 +57,21 @@ const invalid = () => {
     cep.focus()
 }
 
-const showData = (result) => {
-    for (const field in result) {
-        if (document.querySelector('#' + field)) {
-            document.querySelector('#' + field).value = result[field]
-        }
-    }
+const reset = () => {
+    const allFields = document.querySelectorAll('.form-control')
 
-    (mapa = () => {
-        const logradouro = result.logradouro
-        btnSearch.classList.add('disabled')
-        btnSearch.classList.add('btn-dark')
-        btnSearch.classList.remove('btn-primary')
-        cep.setAttribute('readonly', true)
-        emptyFleld.classList.add('d-none')
-        locationDatas.classList.remove('d-none')
-        btnResearch.classList.remove('d-none')
-        contentaMapa.innerHTML = ` <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=${logradouro},Brasil" frameborder="0"></iframe> `
-    })()
+    allFields.forEach((allFields) => {
+        console.log(allFields.value)
+        allFields.value = ''
+    })
+    
+    cep.readOnly = false;
+    cep.focus()
+
+    btnSearch.classList.remove('disabled', 'btn-secondary')
+    btnSearch.classList.add('btn-success')
+    btnResearch.classList.remove('btn-info')
+    btnResearch.classList.add('disabled', 'btn-secondary')
 }
 
 // CONST AND LISTENERS DECLARATIONS
@@ -76,9 +85,8 @@ btnSearch.addEventListener('click', errorMessage)
 const btnResearch = document.querySelector('.research')
 btnResearch.addEventListener('click', reset)
 
-const contentaMapa = document.querySelector('.mapa')
+const contentaMap = document.querySelector('.map')
 const emptyFleld = document.querySelector('.empty-message')
-const locationDatas = document.querySelector('.hidden-content')
 
 cep.addEventListener('keyup', function (event) {
     if (event.keyCode === 13) {
@@ -86,10 +94,5 @@ cep.addEventListener('keyup', function (event) {
         btnSearch.click();
     }
 })
-
-const onlyNumbers = (text) => {
-    text = text.replace(/[^0-9]/g, '');
-    cep.value = text;
-}
 
 btnSearch.addEventListener('click', loadMap)

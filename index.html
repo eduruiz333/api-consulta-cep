@@ -20,13 +20,13 @@
                 <div class="col-12 col-md-3 mb-3">
                     <div class="card">
                         <div class="card-body">
-                            <div class="form-group">
+                            <div class="form-group text-center">
                                 <label for="cep">CEP</label>
-                                <input type="text" class="form-control" id="cep" maxlength="9" oninput="onlyNumbers(this.value)">
+                                <input type="text" class="form-control active" id="cep" maxlength="9" oninput="onlyNumbers(this.value)">
                                 <p class="text-black-50"><small>Digite apenas números</small></p>
                                 <p class="empty-message text-danger font-weight-bold d-none"></p>
                                 <div class="form-group">
-                                    <a class="btn btn-primary search">Procurar</a>
+                                    <a class="btn btn-success search">Procurar</a>
                                 </div>
                             </div>
                         </div>
@@ -34,45 +34,45 @@
                 </div>
 
                 <div class="col-12 col-md-9 mb-3">
-                    <div class="card hidden-content d-none">
+                    <div class="card hidden-content ">
                         <div class="card-body">
-                            <div class="">
-                                <div class="form-group row">
-                                    <div class="col-3 col-md-2">
-                                        <label for="logradouro">Endereço: </label>
-                                    </div>
-                                    <div class="col-9 col-md-10">
-                                        <input type="text" class="form-control" id="logradouro" readonly>
-                                    </div>
+                            <div class="form-group row">
+                                <div class="col-3 col-md-2">
+                                    <label for="logradouro">Endereço: </label>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-3 col-md-2">
-                                        <label for="bairro">Bairro: </label>
-                                    </div>
-                                    <div class="col-9 col-md-10">
-                                        <input type="text" class="form-control" id="bairro" readonly>
-                                    </div>
+                                <div class="col-9 col-md-10">
+                                    <input type="text" class="form-control" id="logradouro" readonly>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-3 col-md-2">
-                                        <label for="localidade">Cidade: </label>
-                                    </div>
-                                    <div class="col-9 col-md-10">
-                                        <input type="text" class="form-control" id="localidade" readonly>
-                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-3 col-md-2">
+                                    <label for="bairro">Bairro: </label>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-3 col-md-2">
-                                        <label for="uf">Estado: </label>
-                                    </div>
-                                    <div class="col-9 col-md-10">
-                                        <input type="text" class="form-control" id="uf" readonly>
-                                    </div>
+                                <div class="col-9 col-md-10">
+                                    <input type="text" class="form-control" id="bairro" readonly>
                                 </div>
-                                <div class="form-group mapa"></div>
-                                <div class="form-group">
-                                    <a class="btn btn-danger research d-none">Nova procura</a>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-3 col-md-2">
+                                    <label for="localidade">Cidade: </label>
                                 </div>
+                                <div class="col-9 col-md-10">
+                                    <input type="text" class="form-control" id="localidade" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-3 col-md-2">
+                                    <label for="uf">Estado: </label>
+                                </div>
+                                <div class="col-9 col-md-10">
+                                    <input type="text" class="form-control" id="uf" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group map">
+                                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=praca-da-se,Brasil" frameborder="0"></iframe>
+                            </div>
+                            <div class="form-group">
+                                <a class="btn btn-secondary research disabled">Nova procura</a>
                             </div>
                         </div>
                     </div>

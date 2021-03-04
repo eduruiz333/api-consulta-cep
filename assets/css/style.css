@@ -33,11 +33,17 @@ input {
     font-family: metropolis;
 }
 
-input:read-only {
+input, input:read-only {
     box-shadow: none !important;
-    border: none;
+    border: none !important;
     background-color: #fff !important;
     color: #4d7a7c !important;
-    padding: 0;
-    height: auto;
+    padding: 0 !important;
+    height: auto !important;
+  }
+
+  .active {
+      border-bottom: solid 1px #4d7a7c !important;
+      background-color: #d3eeeb !important;
+      text-align: center;
   }
