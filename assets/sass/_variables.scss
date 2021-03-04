@@ -1,0 +1,21 @@
+// COLOR PALETTE
+$mainColor: #80cbc4;
+$text: #4d7a7c;
+$white: #ffffff;
+$black: #000000;
+$grey: #666666;
+$bgColor: #263238;
+$bgActive: #d3eeeb;
+
+
+// Font Types
+
+@font-face {
+  font-family: metropolis;
+  src: url('../fonts/metropolis-regular-webfont.woff2');
+
+  font-family: raleway;
+  src: url('../fonts/Raleway-Regular.ttf');
+  }
+
+  $mainFnt: 'raleway', sans-serif;

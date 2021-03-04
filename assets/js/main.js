@@ -30,6 +30,7 @@ const showData = (result) => {
     }
 
     (map = () => {
+        searchResult.classList.add('expand')
         const logradouro = result.logradouro
         contentaMap.innerHTML = ` <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=${logradouro},Brasil" frameborder="0"></iframe> `
         cep.setAttribute('readonly', true)
@@ -61,7 +62,7 @@ const reset = () => {
     const allFields = document.querySelectorAll('.form-control')
 
     allFields.forEach((allFields) => {
-        console.log(allFields.value)
+        // console.log(allFields.value)
         allFields.value = ''
     })
     
@@ -87,6 +88,8 @@ btnResearch.addEventListener('click', reset)
 
 const contentaMap = document.querySelector('.map')
 const emptyFleld = document.querySelector('.empty-message')
+
+const searchResult = document.querySelector('.search-result')
 
 cep.addEventListener('keyup', function (event) {
     if (event.keyCode === 13) {
