@@ -1,16 +1,10 @@
 https://viacep.com.br
 https://www.youtube.com/watch?v=Pi6wkdU2vR4&ab_channel=hcode
 
-https://developers.google.com/maps/documentation/javascript/examples/
-https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-https://developers.google.com/maps/documentation/javascript/examples/marker-simple#maps_marker_simple-javascript
-
-https://www.devmedia.com.br/como-utilizar-a-google-geocoding-api-para-obter-enderecos/36751
-https://www.youtube.com/watch?v=rJcD0cQ6H8k&ab_channel=CodingMindBrasil
-https://imasters.com.br/back-end/google-maps-api
-
 CHAVE API GOOGLE MAPS: AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no
-https://www.google.com/maps/embed/v1/place?key=AIzaSyAvxhlLOjoWKUzoDdnO9H6JRO7quBjW3no&q=Eiffel+Tower,Paris+France
+https://www.google.com/maps/embed/v1/place?key=YOUR_KEY&q=Eiffel+Tower,Paris+France
+
+REF: https://developers.google.com/maps/documentation/embed/get-started
 
 
 https://codepen.io/jSilverize/pen/wWpmAO
