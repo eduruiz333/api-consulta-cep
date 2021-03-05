@@ -54,13 +54,15 @@ iframe {
 }
 
 .hidden-content {
-  transition: all ease 2s;
-  // height: 1px;
+  transition: all ease 3s;
+  height: 1px;
+  opacity: 0;
   visibility: hidden;
   overflow: hidden;
 
   &.expand {
-    visibility: visible;
     height: 100%;
+    opacity: 1;
+    visibility: visible;
   }
 }
