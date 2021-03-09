@@ -93,8 +93,8 @@ const searchResult = document.querySelector('.search-result')
 
 cep.addEventListener('keyup', function (event) {
     if (event.keyCode === 13) {
-        event.preventDefault();
-        btnSearch.click();
+        event.preventDefault()
+        btnSearch.click()
     }
 })
 
